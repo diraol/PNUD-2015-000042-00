@@ -1,0 +1,25 @@
+%\newcommand{\imprimeNumeroContrato}{}
+%\newcommand{\imprimeValorProduto}{}
+%\newcommand{\imprimeValorContrato}{}
+%\newcommand{\imprimeDataEntrega}{}
+%\newcommand{\imprimeLabelSupervisor}{}
+%\newcommand{\imprimeSupervisor}{}
+%\newcommand{\numeroContrato}[1]{\renewcommand{\imprimeNumeroContrato}{#1}}
+%\newcommand{\valorProduto}[1]{\renewcommand{\imprimeValorProduto}{#1}}
+%\newcommand{\valorContrato}[1]{\renewcommand{\imprimeValorContrato}{#1}}
+%\newcommand{\dataEntrega}[1]{\renewcommand{\imprimeDataEntrega}{#1}}
+%\newcommand{\supervisor}[2][Nome do supervisor]{%
+%\renewcommand{\imprimeLabelSupervisor}{#1}%
+%\renewcommand{\imprimeSupervisor}{#2}%
+%}
+\setheadfoot{78.5pt}{12.2pt}
+\setlength\headsep{0.6\headsep}
+\setlength\textheight{0.92\textheight}
+
+%Needs xparse package - Dual Entry for glossary (glossary + acronym)
+\DeclareDocumentCommand{\newdualentry}{ O{} O{} m m m m } {
+  \newglossaryentry{gls-#3}{name={#5},text={#5\glsadd{#3}},
+    description={#6},sort={#3}
+  }
+  \newacronym[see={[Glossário: ]{gls-#3}},#2]{#3}{#4}{#5\glsadd{gls-#3}}
+}
