@@ -1,0 +1,11 @@
+*.zip
+*.aux
+*.bbl
+*.blg
+*.brf
+*.idx
+*.lof
+*.log
+*.synctex.gz
+*.toc
+*-eps-converted-to.pdf
