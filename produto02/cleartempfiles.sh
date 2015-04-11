@@ -1,0 +1,26 @@
+#!/bin/bash
+find -name "*-eps-converted-to.pdf" -exec rm {} \;
+find -name "*.acn" -exec rm {} \;
+find -name "*.acr" -exec rm {} \;
+find -name "*.alg" -exec rm {} \;
+find -name "*.aux" -exec rm {} \;
+find -name "*.bak" -exec rm {} \;
+find -name "*.bbl" -exec rm {} \;
+find -name "*.blg" -exec rm {} \;
+find -name "*.brf" -exec rm {} \;
+find -name "*.glg" -exec rm {} \;
+find -name "*.glo" -exec rm {} \;
+find -name "*.gls" -exec rm {} \;
+find -name "*.glsdefs" -exec rm {} \;
+find -name "*.idx" -exec rm {} \;
+find -name "*.ilg" -exec rm {} \;
+find -name "*.ind" -exec rm {} \;
+find -name "*.ist" -exec rm {} \;
+find -name "*.lof" -exec rm {} \;
+find -name "*.log" -exec rm {} \;
+find -name "*.lol" -exec rm {} \;
+find -name "*.lot" -exec rm {} \;
+find -name "*.mw" -exec rm {} \;
+find -name "*.synctex.gz" -exec rm {} \;
+find -name "*.toc" -exec rm {} \;
+find -name "*.xdy" -exec rm {} \;

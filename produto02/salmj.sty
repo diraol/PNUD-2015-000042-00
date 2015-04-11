@@ -17,10 +17,16 @@
 %%
 
 % ---
-% INICIO DAS CUSTOMIZACOES PARA A UNIVERSIDADE XXX
+% INICIO DAS CUSTOMIZACOES PARA A SECRETARIA DE ASSUNTOS LEGISLATIVOS
+% DO MINISTÉRIO DA JUSTIÇA - PRODUTOS PNUD
 % ---
 
 \ProvidesPackage{salmj}[2015/03/27 Criacao desta customizacao do abnTeX2 para a Secretaria de Assuntos Legislativos do Ministério da Justiça e PNUD]
+
+%Configurando tamanho do cabeçalho, página e rodapé
+\setheadfoot{78.5pt}{12.2pt}
+\setlength\headsep{0.6\headsep}
+\setlength\textheight{0.92\textheight}
 
 % alterando a capa
 \renewcommand{\imprimircapa}{%
@@ -88,6 +94,42 @@ Nome do Consultor: \imprimirautor
 
 \makeatother
 
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.2cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+%%criar um novo estilo de cabeçalhos e rodapés
+\makepagestyle{estilosalmj}
+  %%cabeçalhos
+  \makeevenhead{estilosalmj} %%pagina par
+     {\includegraphics[scale=0.2]{./imagens/topo-esquerda.png}}
+     {\thepage}
+     {\includegraphics[scale=0.4]{./imagens/pnud.png}}
+  \makeoddhead{estilosalmj} %%pagina ímpar ou com oneside
+     {\includegraphics[scale=0.2]{./imagens/topo-esquerda.png}}
+     {}
+     {\includegraphics[scale=0.4]{./imagens/pnud.png} %
+     \ifnum\value{page}>4 \ABNTEXfontereduzida Página \thepage \else \fi}
+  \makeheadrule{estilosalmj}{\textwidth}{\normalrulethickness} %linha
+  % rodapé
+  \makeevenfoot{estilosalmj}
+     {} %%pagina par
+     {}
+     {}
+  \makeoddfoot{estilosalmj} %%pagina ímpar ou com oneside
+     {}
+     {}
+     {}
+
+
 % ---
-% FIM DAS CUSTOMIZACOES PARA A UNIVERSIDADE XXX
+% FIM DAS CUSTOMIZACOES PARA SECRETARIA DE ASSUNTOS LEGISLATIVOS
+% DO MINISTÉRIO DA JUSTIÇA - PRODUTOS PNUD
 % ---

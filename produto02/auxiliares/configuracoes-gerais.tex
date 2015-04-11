@@ -37,7 +37,7 @@
 		pdfauthor={\@author},
     	pdfsubject={\imprimirpreambulo},
 	    pdfcreator={LaTeX with abnTeX2},
-		pdfkeywords={wordpress}{marco civil da internet}{proteção de dados pessoais}{métodos ágeis}, 
+		pdfkeywords={marco civil da internet}{proteção de dados pessoais}{métodos ágeis}, 
 		colorlinks=true,       		% false: boxed links; true: colored links
     	linkcolor=blue,          	% color of internal links
     	citecolor=blue,        		% color of links to bibliography
@@ -47,36 +47,3 @@
 }
 \makeatother
 % --- 
-
-% --- 
-% Espaçamentos entre linhas e parágrafos 
-% --- 
-
-% O tamanho do parágrafo é dado por:
-\setlength{\parindent}{1.2cm}
-
-% Controle do espaçamento entre um parágrafo e outro:
-\setlength{\parskip}{0.2cm}  % tente também \onelineskip
-
-%%criar um novo estilo de cabeçalhos e rodapés
-\makepagestyle{estilosalmj}
-  %%cabeçalhos
-  \makeevenhead{estilosalmj} %%pagina par
-     {\includegraphics[scale=0.2]{./imagens/topo-esquerda.png}}
-     {\thepage}
-     {\includegraphics[scale=0.4]{./imagens/pnud.png}}
-  \makeoddhead{estilosalmj} %%pagina ímpar ou com oneside
-     {\includegraphics[scale=0.2]{./imagens/topo-esquerda.png}}
-     {}
-     {\includegraphics[scale=0.4]{./imagens/pnud.png} %
-     \ifnum\value{page}>4 \ABNTEXfontereduzida Página \thepage \else \fi}
-  \makeheadrule{estilosalmj}{\textwidth}{\normalrulethickness} %linha
-  % rodapé
-  \makeevenfoot{estilosalmj}
-     {} %%pagina par
-     {}
-     {}
-  \makeoddfoot{estilosalmj} %%pagina ímpar ou com oneside
-     {}
-     {}
-     {}
