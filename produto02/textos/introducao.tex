@@ -33,11 +33,11 @@ De forma geral, a Figura \ref{fig:fluxo-processo-as} resume o processo de análi
     \begin{figure}[htb]%
 \begin{tikzpicture}[node distance = 2cm, auto]
     % Place nodes
-    \node [block, minimum width=3cm, text width=3cm] (extract) {Coleta/Extração de dados};
-    \node [block, right of=extract, xshift=2cm] (sentencas) {Separador de sentenças};
+    \node [block, minimum width=3cm, text width=3cm] (extract) {Coleta/Extra\c{c}\~{a}o de dados};
+    \node [block, right of=extract, xshift=2cm] (sentencas) {Separador de senten\c{c}as};
     \node [block, right of=sentencas, xshift=1cm] (tokenizer) {Tokenizador};
     \node [block, right of=tokenizer, xshift=1cm] (tagger) {POS tagger};
-    \node [block, right of=tagger, xshift=1cm] (classific) {Classificação};
+    \node [block, right of=tagger, xshift=1cm] (classific) {Classifica\c{c}\~{a}o};
     % Draw edges
     \path [line] (extract) -- (sentencas);
     \path [line] (sentencas) -- (tokenizer);
