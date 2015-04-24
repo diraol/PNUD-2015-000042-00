@@ -16,4 +16,5 @@
 *.glo
 *.gls
 *.ist
-
+*.ilg
+*.ind
