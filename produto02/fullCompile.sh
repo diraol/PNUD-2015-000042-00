@@ -1,12 +1,27 @@
 #!/bin/bash
-pdflatex -synctex=1 -interaction=nonstopmode produto.tex || { exit 1; }
-pdflatex -synctex=1 -interaction=nonstopmode produto.tex || { exit 1; }
-bibtex produto || { exit 1; }
+#First parameter
+# @name of .tex file
+if [ $1 ]; then 
+  NAME=$1; 
+else
+  NAME='produto';
+fi
+
+#Second Parameter
+# @name of .bib file
+if [ $2 ]; then 
+  BIB=$2; 
+else
+  BIB=$NAME;
+fi
+
+pdflatex -synctex=1 -interaction=nonstopmode $NAME.tex || { exit 1; }
+pdflatex -synctex=1 -interaction=nonstopmode $NAME.tex || { exit 1; }
+bibtex $BIB || { exit 1; }
 # Glossary
-makeindex  -s "produto.ist" -t "produto.glg" -o "produto.gls" "produto.glo" || { exit 1; }
+makeindex  -s "$NAME.ist" -t "$NAME.glg" -o "$NAME.gls" "$NAME.glo" || { exit 1; }
 # Acronym List
-makeindex  -s "produto.ist" -t "produto.alg" -o "produto.acr" "produto.acn" || { exit 1; }
-pdflatex -synctex=1 -interaction=nonstopmode produto.tex || { exit 1; }
-makeTable
-pdflatex -synctex=1 -interaction=nonstopmode produto.tex || { exit 1; }
+makeindex  -s "$NAME.ist" -t "$NAME.alg" -o "$NAME.acr" "$NAME.acn" || { exit 1; }
+pdflatex -synctex=1 -interaction=nonstopmode $NAME.tex || { exit 1; }
+pdflatex -synctex=1 -interaction=nonstopmode $NAME.tex || { exit 1; }
 
