@@ -1,4 +1,20 @@
 #!/bin/bash
+#First parameter
+# @name of the folder where the tex files are file
+if [ $1 ]; then
+  FOLDER=$1;
+else
+  echo "Diretório não encontrado";
+  exit 0;
+fi
+
+if [ ! -d "$FOLDER" ]; then
+  echo "Diretório não encontrado";
+  exit 0;
+fi
+
+cd "$FOLDER";
+
 find -name "*-eps-converted-to.pdf" -exec rm {} \;
 find -name "*.acn" -exec rm {} \;
 find -name "*.acr" -exec rm {} \;
