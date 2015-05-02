@@ -1,0 +1,51 @@
+%------
+%Se deseja-se o capítulo listado no índice mas que apareça aqui sem numeração.
+%--
+%\chapter*[Introdução]{Introdução}
+%\addcontentsline{toc}{chapter}{Introdução}
+%------
+\chapter{Introdução}
+As manifestações ocorridas em Junho de 2013 trouxeram definitivamente para o debate público uma crise de representação política do atual sistema, concretizada principalmente pelo desagrado da população para com os serviços públicos, sejam eles transporte, educação, saúde, etc \cite{SANTANA2013}.
+Conforme pontua \citeonline{svab2014}:
+\begin{citacao}
+A crescente adoção de mecanismos de participação pela Internet trouxe consigo esperança sobre a possibilidade de superação da dicotomia \textit{participação versus representação}, além de também significar incremento no processo de transparência e abertura do governo.
+\end{citacao}
+
+Em 2007 a \gls{sal} iniciou o projeto Pensando o Direito objetivando promover uma democratização do processo de elaboração legislativa no Brasil, mas é agora, com as consultas públicas do \mc\footnote{Consulta Pública da Regulamentação do Marco Civil da Internet - \url{http://participacao.mj.gov.br/marcocivil/} - Acessado em 08/04/2015} e de \pdp\footnote{Consulta Pública do Anteprojeto de Lei de Proteção de Dados Pessoais - \url{http://participacao.mj.gov.br/dadospessoais/} - Acessado em 08/04/2015} que esta iniciativa começa de fato a atingir um público muito mais amplo.
+%TODO Público Mais amplo de quanto?
+
+Com essa nova abrangência, identificam-se novos desafios, dentre eles ``a transparência e clareza na sistematização das discussões promovidas;'' \cite{svab2014}. Este, assim como outros, é um desafio para o qual ainda não se tem uma solução consolidada, principalmente se considerado o fato de que existem diversas metodologias de participação, e cada uma delas demanda um ou mais processos de sistematização.
+
+\section{Objetivo}
+Considerando o contexto exposto anteriormente, o presente relatório objetiva propor soluções para permitir uma sistematização mais automatizada, pública e transparente das consultas públicas em vigor coordenadas pela \gls{sal}, a saber Regulamentação do \mc~e Anteprojeto de Lei de \pdp.
+
+Além disso, também faz parte dos objetivos do presente trabalho propor uma metodologia de organização do desenvolvimento das ferramentas de participação com a finalidade de tornar o processo mais organizado, transparente, público e que permita a colaboração de novos agentes, sejam eles funcionários da instituição, consultores externos ou mesmo integrantes da sociedade civil que desejem contribuir.
+
+\section{Análise de Sentimentos}
+Com a necessidade de se avaliar massivas quantidades de informações, advindas de um grande número de usuários e representando suas opiniões, surgiu uma nova área de pesquisa denominada mineração de opinião, ou análise de sentimentos, cuja finalidade é extrair de forma resumida e sintética a opinião (sentimento) dos usuários com sobre a entidade à qual o usuário está se referindo  \apud{wordnetbr}{Cruvinel}.
+
+As tecnologias para mineração de opiniões são muito mais desenvolvidas, diversas e disseminadas para conteúdos de lingua inglesa, mas já existem diversos recursos disponíveis para a realização de tais análises em lingua portuguesa.
+
+Existem diversas técnicas diferentes para se realizar uma ``análise de sentimento'' de uma opinião, podendo ser o resultado da análise uma simples classificação binária - \textit{positivo} x \textit{negativo}, por exemplo; uma classificação em mais de uma categoria - \textit{positivo} x \textit{neutro} x \textit{negativo}; ou mesmo um resultado numa escala contínua. A mais comum das análises é a que oferece uma saída binária - \textit{positivo} x \textit{negitvo}; \textit{a favor} x \textit{contra} \cite{Pang:2008:OMS:1454711.1454712}.
+
+De forma geral, a Figura \ref{fig:fluxo-processo-as} resume o processo de análise de sentimentos, e na subseção \ref{subsec:analise-sentimentos} estão expostas algumas ferramentas que podem ser utilizadas em algumas dessas etapas para análise de texto em português.
+
+    \begin{figure}[htb]%
+\begin{tikzpicture}[node distance = 2cm, auto]
+    % Place nodes
+    \node [block, minimum width=3cm, text width=3cm] (extract) {Coleta/Extra\c{c}\~{a}o de dados};
+    \node [block, right of=extract, xshift=2cm] (sentencas) {Separador de senten\c{c}as};
+    \node [block, right of=sentencas, xshift=1cm] (tokenizer) {Tokenizador};
+    \node [block, right of=tokenizer, xshift=1cm] (tagger) {POS tagger};
+    \node [block, right of=tagger, xshift=1cm] (classific) {Classifica\c{c}\~{a}o};
+    % Draw edges
+    \path [line] (extract) -- (sentencas);
+    \path [line] (sentencas) -- (tokenizer);
+    \path [line] (tokenizer) -- (tagger);
+    \path [line] (tagger) -- (classific);
+\end{tikzpicture}
+        \caption{Diagrama do fluxo de um processo de análise de sentimentos\label{fig:fluxo-processo-as}}%
+        \fonte{Autoria Própria}%
+    \end{figure}%
+    
+De forma resumida, o diagrama acima mostra que primeiro temos a coleta dos dados, em seguida o há a separação das sentenças a serem analisadas. Cada sentensa passa pelo \textit{Tokenizador}, que separa as palavras em tokens individuais, para que na etapa seguinte a classe gramatical de cada token seja analisada, considrando seu contexto no texto. Por fim há o Classificador, que define o ``sentimento'' das sentenças.

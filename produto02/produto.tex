@@ -1,0 +1,277 @@
+%% abtex2-modelo-relatorio-tecnico.tex, v<VERSION> laurocesar
+%% Copyright 2012-2015 by abnTeX2 group at http://abntex2.googlecode.com/ 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on 
+%% http://abntex2.googlecode.com/
+%%
+%% This work consists of the files abntex2-modelo-relatorio-tecnico.tex,
+%% abntex2-modelo-include-comandos and abntex2-modelo-references.bib
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% abnTeX2: Modelo de Relatório Técnico/Acadêmico em conformidade com 
+% ABNT NBR 10719:2011 Informação e documentação - Relatório técnico e/ou
+% científico - Apresentação
+% ------------------------------------------------------------------------ 
+% ------------------------------------------------------------------------
+
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em verso e anverso. Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% PACOTES
+\include{auxiliares/pacotes}
+\include{auxiliares/pacotes-configuracoes}
+\include{auxiliares/comandos-extras}
+\include{auxiliares/configuracoes-gerais}
+% ---
+% compila o indice
+\makeindex
+\makeglossaries
+
+\include{textos/siglas}
+\renewcommand*{\glsseeformat}[3][\seename]{\textit{#1}\glsseelist{#2}}
+
+% ----
+% Início do documento
+\begin{document}
+\pagestyle{estilosalmj}
+\aliaspagestyle{chapter}{estilosalmj}% customizing chapter pagestyle
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+
+% ---
+% Capa
+\imprimircapa
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+\imprimirfolhaderosto*
+
+% ---
+% Anverso da folha de rosto:
+\include{textos/ficha-catalografica}
+
+% ---
+% Agradecimentos
+\include{textos/agradecimentos}
+
+% ---
+% RESUMO
+% resumo na língua vernácula (obrigatório)
+\include{textos/resumo}
+
+% ---
+% inserir lista de símbolos
+\include{textos/simbolos}
+
+% ---
+% inserindo listas (tabelas, ilustrações, etc.)
+\include{textos/listas}
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+\pagestyle{estilosalmj}
+\aliaspagestyle{chapter}{estilosalmj}% customizing chapter pagestyle
+
+% ---
+% Introdução
+\input{textos/introducao}
+
+% ---
+% Desenvolvimento
+\input{textos/desenvolvimento}
+%\input{textos/desenvolvimento-dadospessoais}
+%\input{textos/desenvolvimento-marcocivil}
+%\input{textos/desenvolvimento-metodoagil}
+
+% ---
+% Conclusão
+\input{textos/conclusao}
+
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{produto}
+
+% ---
+% inserir lista de abreviaturas e siglas
+
+
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+%
+% Consulte o manual da classe abntex2 para orientações sobre o glossário.
+%
+%\glossary
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+
+% ---
+% Inicia os apêndices
+% ---
+%\begin{apendicesenv}
+
+% Imprime uma página indicando o início dos apêndices
+%\partapendices
+
+% ----------------------------------------------------------
+%\chapter{Primeiro apêndice}
+% ----------------------------------------------------------
+
+%\end{apendicesenv}
+% ---
+
+% ----------------------------------------------------------
+% Anexos
+% ----------------------------------------------------------
+
+% ---
+% Inicia os anexos
+% ---
+%\begin{anexosenv}
+
+% Imprime uma página indicando o início dos anexos
+%\partanexos
+
+% ---
+%\chapter{Primeiro Anexo}
+
+%\end{anexosenv}
+
+%---------------------------------------------------------------------
+% INDICE REMISSIVO
+%---------------------------------------------------------------------
+%
+%\phantompart
+%
+%\printindex
+% Define nome e preâmbulo do glossário
+\phantompart
+\renewcommand{\glossaryname}{Gloss\'{a}rio}
+%\renewcommand{\glossarypreamble}{Esta é a descrição do glossário. Experimente}
+% ---
+% Traduções para o ambiente glossaries
+\providetranslation{Glossary}{Glossário}
+\providetranslation{Acronyms}{Siglas}
+\providetranslation{Notation (glossaries)}{Notação}
+\providetranslation{Description (glossaries)}{Descrição}
+\providetranslation{Symbol (glossaries)}{Símbolo}
+\providetranslation{Page List (glossaries)}{Lista de Páginas}
+\providetranslation{Symbols (glossaries)}{Símbolos}
+\providetranslation{Numbers (glossaries)}{Números}
+% ---
+% Estilo de glossário
+\setglossarystyle{altlist}
+\setacronymstyle{long-short-desc}
+% ---
+% Imprime o glossário
+%\cleardoublepage
+\phantomsection
+\printindex[sort=word]
+
+%---------------------------------------------------------------------
+% Formulário de Identificação (opcional)
+%---------------------------------------------------------------------
+%\chapter*[Formulário de Identificação]{Formulário de Identificação}
+%\addcontentsline{toc}{chapter}{Exemplo de Formulário de Identificação}
+%\label{formulado-identificacao}
+%
+%%Exemplo de Formulário de Identificação, compatível com o Anexo A (informativo) da ABNT NBR 10719:2011. Este formulário não é um anexo. Conforme definido na norma, ele é o último elemento pós-textual e opcional do relatório.
+%
+%\bigskip
+%
+%\begin{tabular}{|p{9cm}|p{5cm}|}
+%\hline
+%\multicolumn{2}{|c|}{\textbf{\large Dados do Relatório Técnico}}\\
+%\hline
+%\multirow{4}{9cm}{{Relatório contendo avaliação e propostas de melhorias técnicas para ferramentas e aplicações de consulta pública, incluindo plugins}}& Classificação de segurança\\
+%                    & \\
+%                   \cline{2-2}
+%                   & No.\\
+%                    & 1 \\
+%				
+%\hline
+%Relatório Técnico & 13/03/2015\\
+%\hline
+%{Projeto Democratização de Informações no Processo de Elaboração Normativa} & No. BRA/07/004\\
+%\hline
+%\multicolumn{2}{|l|}{Diego Rabatone Oliveira} \\
+%\hline
+%\multicolumn{2}{|l|}{Secretaria de Assuntos Legislativos do Ministério da Justiça (SAL/MJ)} \\
+%\hline
+%\multicolumn{2}{|l|}{Programa das Nações Unidas para o Desenvolvimento (PNUD)} \\
+%\hline
+%\multicolumn{2}{|l|}{\multirow{1}{0.9\textwidth}{Este produto objetiva realizar uma avaliação técnica das ferramentas e aplicações de consulta pública do projeto “Pensando o Direito”, do Ministério da Justiça. Além da avaliação serão também propostas melhorias dos recursos já existentes, tendo como objetivo secundário a publicização de tais melhorias enquanto ferramentas livres que possam ser reutilizadas pela sociedade. Para o desenvolvimento deste trabalho foi utilizada metodologia de desenvolvimento ágil, com definição de tarefas a serem realizada e sprints para a realização das mesmas. Resulta ainda deste trabalho uma recomendação de método de trabalho da equipe de desenvolvimento.}}\\[5cm]
+%\hline
+%\multicolumn{2}{|l|}{\multirow{1}{0.9\textwidth}{Palavras-Chaves: Wordpress, \mc, \pdp, Métodos Ágeis}}\\[0.7cm]
+%\hline
+%\multicolumn{2}{|l|}{
+%1$^a$Edição \hfill \pageref{LastPage} páginas \hfill Volume 1 \hfill Nº de classificação \phantom{XXXX}} \\
+%\hline
+%\multicolumn{2}{|l|}{ISSN \phantom{XXXX}\hfill Tiragem \phantom{XXXX}} \\
+%\hline
+%%\multicolumn{2}{|l|}{Distribuidor} \\
+%%\hline
+%%\multicolumn{2}{|l|}{Observações/notas}\\[3cm]
+%%\hline
+%\end{tabular}
+%
+\end{document}

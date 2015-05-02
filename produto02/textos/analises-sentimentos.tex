@@ -1,0 +1,38 @@
+\subsection{Análise de Sentimentos\label{subsec:analise-sentimentos}}
+Para além da proposta de utilização da ferramenta \textit{Hypotes.is} como auxiliar do processo de sistematização das contribuições, exposta na Seção \ref{sec:anotacoes}, iremos agora indicar alguns recursos a serem melhor estudados e avaliados para o desenvolvimento de novas ferramentas que auxiliem no processo de sistematização das contribuições.
+
+\subsubsection{WordNet.Br 1.0 e SentiLex-PT}
+A \textbf{WordNet.Br 1.0}~\cite{wordnetbr} é uma base de dados de verbos da língua portuguesa construída de forma alinhada com a versão 2.0 da WordNet de Princeton~\cite{wordnetpr,Miller:1995:WLD:219717.219748}, base de verbos na língua inglesa.
+
+Esta versão conta com 5860 verbos em 3713 \glspl{synset}. Um \gls{synset} é um conjunto elementos que são considerados semanticamente equivalentes para o propósito de extração de informações.
+
+Além do WordNet.Br existe ainda o \textbf{SentiLex-PT}\cite{sentilexpt,carvalho2015sentilex}, um léxico de sentimento para o português construído por 7.014 lemas e 82.347 formas flexionadas. Mais especificamente este léxico descreve - entre parênteses número de formas flexionadas:
+\begin{itemize}
+\item 4.799 (16.863) adjetivos;
+\item 1.081 (1.280) substantivos;
+\item 489 (29.504) verbos; e
+\item 666 (34.700) expressões idiomáticas.
+\end{itemize}
+
+Para cada entrada do SentiLex-PT temos como atributos de sentimentos o alvo do sentimento, a polaridade do predicador e o método de atribuição de polaridade.
+
+O SentiLex-PT está disponível para download em seu \href{http://dmir.inesc-id.pt/project/SentiLex-PT_02}{site oficial} (\url{http://dmir.inesc-id.pt/project/SentiLex-PT_02}), enquanto o WordNet.Br apenas consta como um serviço web para consulta pontual. Seria de grande relevância buscar um diálogo com os responsáveis pelo WordNet.Br no sentido de torná-lo também uma base pública que possa ser incorporada a aplicações de análise de ferramentas, assim como torná-lo um webservice que permita automatizações das consultas.
+
+\subsubsection{Apache OpenNLP}
+O Apache OpenNLP%
+\footnote{Apache OpenNPL - \url{https://opennlp.apache.org/} - Acesso em 15/04/2015}
+é um \gls{toolkit} livre (\textit{Apache License, Version 2.0}) desenvolvido pela Apache Foundation que utiliza recursos de aprendizado de máquina (\textit{machine learning}) para o processamento de textos em linguagem natural (\gls{pln} ou \gls{nlp}). Este \gls{toolkit} realiza a maioria das tarefas tradicionais de sistemas de \gls{pln}, tarefas essas que servem de base para a construção de sistemas mais complexos. Vale destacar que nem todas as tarefas estão disponíveis para a língua portuguesa. As tarefas presentes no OpenNLP são:
+\begin{itemize}
+\item Tokenização;
+\item segmentação de sentenças;
+\item tagueamento de trechos de discursos;
+\item extração de entidade nomeada;
+\item \textit{chunking};
+\item parseamento; e
+\item resolução de co-referência.
+\end{itemize}
+
+\subsubsection{Criando seu classificadorcom TextBlob}
+Uma das técnicas mais comuns para classificação de textos é a chamada Análise Bayesiana. Já existem diversas ferramentas que facilitam sua aplicação, como é o caso da biblioteca \textit{TextBlob}%
+\footnote{\textit{TextBlob} - Biblioteca Python para \gls{pln} - \url{http://textblob.readthedocs.org/} - Acessado em 16/04/2015}.
+Neste documento não entraremos em detalhes relativos à sua aplicação, apenas deixamos aqui a indicação de sua utilização, em especial seguindo o tutorial da própria biblioteca disponível em: \url{http://textblob.readthedocs.org/en/dev/classifiers.html}.

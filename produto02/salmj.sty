@@ -1,0 +1,135 @@
+%%
+%% Customizações do abnTeX2 (http://abnTeX2.googlecode.com) para a Universidade XXXX
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is SEU_NOME, SEU_EMAIL
+%%
+%% Further information about abnTeX2 are available on http://abntex2.googlecode.com/
+%%
+
+% ---
+% INICIO DAS CUSTOMIZACOES PARA A SECRETARIA DE ASSUNTOS LEGISLATIVOS
+% DO MINISTÉRIO DA JUSTIÇA - PRODUTOS PNUD
+% ---
+
+\ProvidesPackage{salmj}[2015/03/27 Criacao desta customizacao do abnTeX2 para a Secretaria de Assuntos Legislativos do Ministério da Justiça e PNUD]
+
+%Configurando tamanho do cabeçalho, página e rodapé
+\setheadfoot{78.5pt}{12.2pt}
+\setlength\headsep{0.6\headsep}
+\setlength\textheight{0.92\textheight}
+
+% alterando a capa
+\renewcommand{\imprimircapa}{%
+  \begin{capa}%
+     \includegraphics[scale=0.2]{./imagens/topo-esquerda.png} \hfill
+     \includegraphics[scale=0.4]{./imagens/pnud.png}\hskip.5cm
+	\center
+    %\ABNTEXchapterfont\Large UNIVERSIDADE QUE TORNA OS DOCUMENTOS AINDA MAIS ESTRANHOS
+    
+    %\vspace*{1cm}
+    
+    %{\ABNTEXchapterfont\large\imprimirautor}
+
+    \vfill
+    \begin{center}
+    \ABNTEXchapterfont\bfseries\Large\imprimirpreambulo \\[1cm]
+    \ABNTEXchapterfont\bfseries\imprimirtitulo
+    \end{center}
+    \vfill
+    
+    \large\imprimirautor
+    
+    \vfill
+
+    \imprimirlocal , \imprimirdata
+  \end{capa}
+}
+
+
+% folha de rosto 
+
+\makeatletter
+
+\renewcommand{\folhaderostocontent}{
+\begin{center}
+{\ABNTEXchapterfont\HUGE \imprimirtitulo} \\
+
+	\hrulefill
+    
+    \vspace*{1cm}
+    
+{\ABNTEXchapterfont\large{Contrato n. \numeroContrato}}
+
+\end{center}
+
+\vspace*{\fill}\vspace*{\fill}
+
+Valor do produto: \valorProduto
+    \vspace*{1cm}
+
+Data da entrega: \dataEntrega
+    \vspace*{1cm}
+
+Nome do Consultor: \imprimirautor
+    \vspace*{1cm}
+
+\labelSupervisor: \supervisor
+
+\vspace*{\fill}
+\par
+
+{\imprimirdata}
+\vspace*{1cm}
+}
+
+\makeatother
+
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.2cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+%%criar um novo estilo de cabeçalhos e rodapés
+\makepagestyle{estilosalmj}
+  %%cabeçalhos
+  \makeevenhead{estilosalmj} %%pagina par
+     {\includegraphics[scale=0.2]{./imagens/topo-esquerda.png}}
+     {\thepage}
+     {\includegraphics[scale=0.4]{./imagens/pnud.png}}
+  \makeoddhead{estilosalmj} %%pagina ímpar ou com oneside
+     {\includegraphics[scale=0.2]{./imagens/topo-esquerda.png}}
+     {}
+     {\includegraphics[scale=0.4]{./imagens/pnud.png} %
+     \ifnum\value{page}>4 \ABNTEXfontereduzida Página \thepage \else \fi}
+  \makeheadrule{estilosalmj}{\textwidth}{\normalrulethickness} %linha
+  % rodapé
+  \makeevenfoot{estilosalmj}
+     {} %%pagina par
+     {}
+     {}
+  \makeoddfoot{estilosalmj} %%pagina ímpar ou com oneside
+     {}
+     {}
+     {}
+
+
+% ---
+% FIM DAS CUSTOMIZACOES PARA SECRETARIA DE ASSUNTOS LEGISLATIVOS
+% DO MINISTÉRIO DA JUSTIÇA - PRODUTOS PNUD
+% ---
