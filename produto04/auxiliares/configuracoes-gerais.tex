@@ -1,0 +1,49 @@
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Produto 4 - Relatório contendo requisitos técnicos para desenvolvimento de software, na forma de aplicativo móvel, para viabilizar ferramentas de participação social para dispositivos móveis.}
+\autor{Diego Rabatone Oliveira}
+\local{Brasil}
+\data{Junho/2015, v1}
+\newcommand{\numeroContrato}{2015/000042-00}
+\newcommand{\valorProduto}{R\$9.800,00 (nove mil e oitocentos reais)}
+\newcommand{\valorContrato}{R\$40.000,00 (quarenta mil reais}
+\newcommand{\dataEntrega}{15/06/2015}
+\newcommand{\labelSupervisor}{Supervisora}
+\newcommand{\supervisor}{Sabrina Durigon Marques}
+\instituicao{%
+  Secretaria de Assuntos Legislativos do 
+  \par
+  Ministério da Justiça (SAL/MJ)}
+\orientador[Supervisora:]{Sabrina Durigon Marques}
+
+\tipotrabalho{Relatório técnico}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Relatório referente ao Projeto BRA/07/004 – Democratização de Informações no Processo de Elaboração Normativa}
+% ---
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={Pensando O Direito}{Ministério da Justiça}{Aplicativo Móvel}{Participação Social}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 

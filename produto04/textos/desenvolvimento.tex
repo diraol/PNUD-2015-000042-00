@@ -1,0 +1,95 @@
+\chapter{Desenvolvimento}
+Considerando os atuais recursos presentes na plataforma Pensando O Direito e, em especial, os modelos de consulta pública, a presente proposta de requisitos para o desenvolvimento de um aplicativo móvel considerará três grandes módulos, apresentados na seção \ref{sec:modulos}:
+\begin{description}
+\item[Módulo 1]Publicações;
+\item[Módulo 2]Debate Temático; e
+\item[Módulo 3]Debate de Texto.
+\end{description}
+
+Além disso, na seção \ref{sec:tecnologias} serão apresentadas alternativas tecnológicas que podem ser utilizadas para a construção do aplicativo, com algumas reflexões sobre cada uma delas.
+
+\section{Módulos do Aplicativo}\label{sec:modulos}
+\subsection{Módulo 1 - Publicações}
+O primeiro módulo diz respeito às Publicações da série Pensando O Direito.
+
+Este seria um módulo bem simples, cujo objetivo é promover a divulgação das Publicações realizadas no âmbito do projeto.
+
+Assim, para este módulo apenas é necessário listar as publicações da série Pensano O Direito, permitir buscas por palavras-chave e também permitir comentários nas publicações, além do compartilhamento das mesmas em redes sociais.
+
+\subsection{Módulo 2 - Debates temáticos}
+Este módulo seria destinado às consultas públicas baseadas no modelo de Debates Temáticos, divididos ou não em eixos e pautas.
+
+Em termos de funcionalidade, este módulo se parece com o modelo de Fórum. Aqui, para cada debate aberto, teríamos um ou mais eixos de discussão e, para cada eixo, diversas Pautas - que podem ou não serem criadas pelos próprios usuários.
+
+Cada Pauta estará à disposição dos usuários para que estes comentem as mesmas, e também deve-se permitir que os usuários respondam a comentários realizados, num modelo de aninhamento.
+
+\subsection{Módulo 3 - Debate de texto}
+Este módulo é destinado às consultas públicas que visam debater uma proposta de texto.
+
+Neste módulo os usuários são convidados a fazerem comentários em cada parágrafo do texto base da consulta. Também deve ser facultado aos usuários responderem a comentários de outros usuários, no modelo de aninhamento.
+
+O grande desafio neste módulo, quando comparado ao que está implementado no site atual, é o controle da quantidade de informações enviadas ao usuário por requisição. No site atual, quando o usuário acessa uma consulta neste modelo, todos os comentários são enviados de uma única vez.
+
+Existem dois problemas nesta abordagem. A primeira delas é o consumo excessivo de banda que ela pode causar a depender da quantidade de comentários. O outro problema é a forma como a interface é implementada hoje, que demanda muito processamento de dados diretamente no navegador do usuário, e que num dispositivo mobile faria com que o desempenho ficasse muito prejudicado.
+
+\subsection{Características e funcionalidades gerais}
+Algumas características devem perpassar todos os módulos do aplicativo.
+
+O primeiro deles é a habilidade de compartilhar informações nas redes sociais. Deve ser extremamente prático e rápido para o usuário compartilhar conteúdos do aplicativo nas redes sociais, com link que traga os usuários de volta para o conteúdo compartilhado, tentando atrair novos usuários.
+
+A segunda, a ser avaliada, é permitir que os usuários contribuam não só com textos, mas também com áudio e vídeo, produzidos diretamente nos dispositivos móveis.
+
+Além disso, seria fundamental que o aplicativo tivesse o recurso de \textit{push notification}, ou seja, que o aplicativo perceba que houve uma atualização e envie uma notificação para o usuário na área de notificações do dispositivo. Idealmente este recurso seria usado ``por padrão'' para novas consultas públicas - sempre que uma nova consulta for lançada o usuário é notificado; e o usuário também poderia se ``cadastrar'' para receber notificações específicas de comentários em uma determinada consulta pública ou em uma determinada pauta, por exemplo.
+
+\section{Tecnologias}\label{sec:tecnologias}
+Nesta seção serão apresentadas as principais alternativas tecnológicas pelas quais é possível se construir uma aplicativo para dispositivos móveis. Além disso, serão elencadas algumas vantages e desvantages de cad auma destas alternativas.
+
+Vale destacar que, independente da tecnologia que será utilizada, será fundamental criar uma API para expor os dados do atual site do Pensando O Direito e também para permitir a inserção e modificação dos dados da plataforma. O ideal seria implementar uma API Restfull, e deve-se ainda tomar cuidado com o processo de autenticação e identificação do App.
+
+\subsection{Aplicativos Nativos}
+A primeira opção em termos de aplicativos para dispositivos móveis é o chamado ``desenvolvimento nativo'', no qual desenvolve-se o aplicativo para cada plataforma utilizando a linguagem da mesma - Objective-C no caso do iOS e Java no caso de Android.
+
+O desenvolvimento nativo apresenta algumas vantagens, como a maior facilidade de o aplicativo ser aceito na Apple Store, e um melhor acesso a todos os recursos do dispositivo. Mas a maior vantagem apresentada quando utilizado o desenvolvimento nativo é um melhor desempenho da aplicação.
+
+Porém, algumas desvantagens se apresentam. A principal desvantagem que podemos citar é a necessidade de desenvolvimento para todas as diversas plataformas que se almeja. Isso significa que a equipe precisa ser qualificada para desenvolver para todas estas plataformas. Além disso, existe um grande sobretrabalho para manter todos os aplicativos sincronizados em termos de desenvolvimento, com os mesmos recursos implementados, resolver bugs de todas as diversas plataformas e especificar o produto para as mesmas.
+
+Considerando as limitações de equipe existentes na \gls{sal}, não parece ser adequado optar por este caminho, ao menos neste momento.
+
+\subsection{Aplicativos Híbridos}
+Uma outra alternativa em termos de aplicativos para dispositivos móveis é com os chamados ``aplicativos híbridos'', que são aplicações desenvolvidas utilizando-se de html, css e javascript - mesmas linguagens já utilizadas no site atual; e ``empacotando'' esta aplicação web num app utilizando alguns frameworks como \textit{Phonegap} e \textit{Cordova}.
+
+A grande vantagem desta técnica é que ela permite criar app's para as duas principais plataformas (Android e iOS) com uma mesma base de código.
+
+A principal desvantagem deste modelo de desenvolvimento é que para algumas aplicações o desempenho do aplicativo pode ficar um pouco limitado, mas para o caso do projeto Pensando O Direito, que não exige animações gráficas, o dependenho de um aplicativo móvel híbrido pode ser adequado, dependendo apenas de como o mesmo será desenvolvido e da aplicação de técnicas de otimização.
+
+Uma outra possível desvantagem da utilização de desenvolvimento híbrido é a aceitação do mesmo na loja de aplicativos da Apple. Aparentemente a Apple rejeita aplicativos que não possuam ``aparência de aplicativo móvel''.
+
+Para superar esta dificuldade, uma abordagem recomendada é a utilização de \gls{ui} \textit{frameworks} criados para o desenvolvimento de aplicações móveis híbridas, que implementam interfaces com visual de aplicativos móveis. Dentre estes, recomendam-se os seguintes:
+\begin{description}
+\item[ionic + AngularJS] - Talvez o mais promissor dos frameworks criados para aplicações híbridas, faz par com o popular framework javascript AngularJS (desenvolvido pelo google)\footnote{ionic - \url{http://ionicframework.com}}$^,$\footnote{AngularJS - \url{https://angularjs.org/}};
+\item[React] - Framework desenvolvido pelo Facebook para aplicações móveis\footnote{React - \url{https://facebook.github.io/react}}; e
+\item[jQueryMobile + BackboneJS] - Framework mobile desenvolvido sob a famosa biblioteca javascript jQuery e aliado ao poderoso BackboneJS\footnote{jQueryMobile - \url{https://jquerymobile.com}}$^,$\footnote{BackboneJS - \url{http://backbonejs.org}};
+\end{description}
+
+\subsection{Aplicativo gerado por plugins ou serviços}
+Considerando que a plataforma Pensando O Direito foi construída baseada no \gls{cms} Wordpress, existe ainda uma terceira opção que é a utilização de alguns plugins para wordpress que prometem entregar aplicativos nativos gerados a partir do próprio site.
+
+Considerando as especifidades do Portal Pensando O Direito, em especial as ferramentas para consulta pública desenvolvidas e utilizadas (comentário por parágrafo e debate de eixos e temas), é possível que alguns plugins ou serviços aqui apresentados não produzam um aplicativo que consiga atender às necessidades de interatividade desejadas e se destinem apenas a sites wordpress que se comportam como blogs.
+
+\subsubsection{AppPresser}
+O primeiro que iremos listar aqui é o mais comentado nos meios especializados, chamado \textit{AppPresser}. O AppPresser é tanto um Plugin\footnote{AppPresser Plugin - \url{http://wordpress.org/plugins/apppresser/}} para Wordpress quanto um Serviço\footnote{AppPresser - \url{http://apppresser.com}}.
+
+O Plugin do AppPresser está disponível no github\footnote{AppPresser no GitHub - \url{https://github.com/WebDevStudios/AppPresser}} e ele objetiva integrar o Phonegap ao Wordpress, expondo a API do Phonegap para seu site, de forma que você possa construir seu APP utilizando javascript e Phonegap dialogando com seu website por meio da API exposta. Mas este Plugin não gera automaticamente um APP, este precisa ser desenvolvido pela equipe de desenvolvimento utilizando o Phonegap.
+
+Já o serviço oferecido pela AppPresser, pago, promete entregar o aplicativo pronto, utilizando temas e plugins desenvolvidos pela empresa. Vale destacar que os modelos de aplicativos utilizados como exemplo no site podem ser classificados como ``e-commerce'' ou ''blog''. Assim, é de se esperar que para utilizar o serviço do AppPresser será necessário contratar a empresa para desenvolver recursos específicos pertencentes à plataforma Pensando O Direito. O produto final oferecido é um aplicativo desenvolvido utilizando o framework Phonegap, ou seja, um App-Híbrido.
+
+\subsubsection{IdeaPress}
+O IdeaPress\footnote{IdeaPress - \url{http://ideapress.me}} é um plugin que, primeiramente, requer a instalação e configuração de um plugin que exponha uma API JSON para acesso ao conteúdo, tanto para a construção do APP quando para sua utilização.
+
+Da mesma forma como o serviço do AppPresser, o IdeaPress também é um serviço pago. Apenas para geração de APP para as plataformas Android, iOS e Windows Phone, seu custo é de US\$69. Neste caso caberia à equipe submeter os APPs para as lojas de aplicativas das plataformas.
+
+Para que o serviço do IdeaPress gere os três aplicativos e submeta eles às lojas das três plataformas, o custo passa a ser de US\$199,00.
+
+Por fim, pelo valor de US\$1000,00 o IdeaPress oferece acesso ao código fonte do IdeaPress para desenvolvedores.
+
+Nas três opções há suporte da equipe do IdeaPress.
