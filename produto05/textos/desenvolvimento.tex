@@ -1,0 +1,82 @@
+\chapter{Desenvolvimento}
+Esta documentação está dividida em duas partes principais. A primeira delas, Seção \ref{sec:papel}, apresentará qual é o papel do Portal \ppod, como ele irá se relacionar com as demais iniciativas. A segunda delas, Seção \ref{sec:recursos}, vai apresentar as principais modificações que foram implementadas ou que deverão ser implementadas no projeto \ppod.
+
+\section{Papel}\label{sec:papel}
+O portal \ppod foi criado para promover a democratização do processo de elaboração legislativa no Brasil.
+
+A principal ação promovida no âmbito do projeto é a mobilização de setores importantes da sociedade – Academia, instituições de pesquisa, ONG’s entre outros – para a realização de estudos em temas de interesse da Secretaria.
+	
+Porém, as ações da \gls{sal} no sentido de democratizar o processo de elaboração legislativa se expandiu para contemplar também consultas públicas para legislações em produção.
+
+Até o início da presente consultoria, tais consultas não eram realizadas como parte do projeto \ppod, mas sim como partes de um ``meta-projeto'' chamado ``Participação'', atuando ``em paralelo'' ao \ppod.
+
+Após diversas reflexões da equipe, decidiu-se que a melhor opção seria remodelar este fluxo utilizando o Portal \ppod como um ``guarda-chuva'' de diversas iniciativas, dentre elas as consultas públicas.
+
+Dessa forma, o Portal \ppod passa a ser o portal das iniciativas de participação social da \gls{sal}, sendo elas:
+
+\begin{description}
+\item[Publicações] Estudos realizados em parceria com acadêmicos e especialistas;
+\item[Debates] Consultas e Debates Públicos realizados por meio de plataformas específicas;
+\item[Proponha um Debate] Ferramenta para que a população proponha um \textbf{Debate} a ser realizado;
+\item[Programa de Intercâmbio] Blog para divulgação das atividades do Programa promovido pela \gls{sal};
+\item[Agenda] Agenda oficial da \gls{sal} e do Secretário; e
+\item[outras] que venham a surgir.
+\end{description}
+
+\section{Implementação de Recursos e Principais Diretrizes}\label{sec:recursos}
+\subsection{Endereços}
+Um ponto importante de ser definido é a padronização de endereços (urls) relativos ao projeto \ppod e todas as iniciativas que derivam dele.
+
+Atualmente o endereço principal utilizado é o \url{http://participacao.mj.gov.br}. Com a finalidade de fortalecer a marca \ppod, e remover uma confusão entre o ``\ppod'' e o ``Portal de Participação Social do Ministério da Justiça'' - que deixa de existir e passa a ser o próprio portal do ``Pensando''; o endereço atual deverá ser redirecionado para o novo endereço a ser utilizado \url{http://pensando.mj.gov.br}, que passa a ser o endereço oficial do projeto e que deve ser utilizado nas divulgações a partir do momento da efetivação da mudança.
+
+Outro ponto diz respeito ao endereço das consultas públicas. Cada uma das consultas públicas realizadas possuia um endereço (subdomínio) próprio (ex.: \url{http://marcocivil.mj.gov.br}). A vantagem deste modelo é que ele destaca a consulta que está sendo realizada, e permite que se defina um endereço consideravelmente curto e fácil de memorizar/divulgar.
+
+Porém, este modelo apresenta duas principais desvatagens. A primeira delas é que ele dificulta encontrar quais são as consultas em vigor, ou realizadas, visto que não há um padrão de endereço para as consultas públicas.
+
+Outra desvantagem é que este modelo acaba por desfavorecer a marca do \ppod, em especial no que diz respeito ao endereço, e prejudica também o desempenho do endereço em sistemas de busca e de redes sociais, já que o endereço principal do pensando acaba tendo seu público dividido e segmentado com outros endereços (das consultas).
+
+Assim, acordou-se que os endereços das próximas consultas (debates) públicas estarão ficarão sob o endereço do projeto \ppod, preferencialmente como: \textit{http://pensando.mj.gov.br/debate/<nome\_do\_debate>}, padronizando assim o endereço de todas as consultas e debates e também reforçando o endereço do projeto.
+
+Após a implementação deste modelo de endereços, três ações são importantes de serem realizadas.
+
+A primeira ação é revistar os conteúdos publicados no portal, realizando a substituição dos endereços antigos pelos novos formatos. Esta tarefa pode ser realizada por meio de busca e substituição tanto nos códigos-fonte do projeto quanto nas bases de dados do projeto.
+
+A segunda ação é a mudança dos endereços nos perfis de redes sociais (Twitter, Facebook, Instagram) utilizados (Pensando O Direito, Marco Civil da Internet, Dados Pessoais, etc).
+
+A terceira ação é a configuração dos servidores para que eles redirecionem os endereços antigos para os novos endereços, evitando que algum usuário que tenha acesso aos endereços antigos não consiga acessar o conteúdo ou acesse um conteúdo desatualizado.
+
+\input{textos/publicacoes}
+
+\input{textos/debates}
+
+\subsection{Programa de Intercâmbio}
+Uma das ações da \gls{sal} é o Programa de Intercâmbio, voltado para estudantes de graduação e pós-graduação.
+
+Este programa contava com um blog independente, desvinculado do projeto \ppod. Com o objetivo de fortalecer ambas iniciativas, o blog do projeto será integrado ao Pensando O Direito como um subsite.
+
+Dessa forma, além de uma uniformização na linguagem visual dos sites, o blog do programa de intercâmbio também aparecerá no menu do Portal \ppod.
+
+\subsection{Agenda}
+Um novo recurso a ser implementado no portal é uma Agenda de Eventos, com as atividades da \gls{sal}.
+
+Para esta agenda pode ser desenvolvido um novo \gls{cpt} ou pode-se buscar um plugin de eventos do Wordpress que ajude atenda as requisitos definidos, como por exemplo o \textit{events manager}\footnote{\textit{Events Manager}: \url{https://wordpress.org/plugins/events-manager/}}, sendo necessário apenas desenvolver o template para a agenda conforme a programação visual do Portal.
+
+\subsection{Destaques}
+Na página inicial há uma área de banner dedicada a destacar conteúdos específicos, de acordo com decisões da equipe de comunicação.
+
+Para esta área foi desenvolvido um \gls{cpt} específico, chamado ``\textit{destaque\_post\_type}'', que permitirá que a equipe de comunicação possa criar, agendar, publicar e despublicar os destaques conforme a necessidade, sem que seja preciso interferência da equipe de desenvolvimento.
+
+Este novo \gls{cpt} permite a adição de vídeo, imagem e texto, podendo o vídeo e a imagem serem acompanhadas de um textou ou não.
+
+\subsection{Outras modificações}
+Além do já exposto, algumas outras modificações foram realizadas.
+
+As \textbf{Categorias} utilizadas para as \textbf{Notícias} foram padronizadas e reduzidas, facilitando a organização dos conteúdos. Caso se deseje adicionar informações mais detalhadas sobre uma notícia, o campo a ser utilizado deve ser o campo de \textbf{Tag}.
+
+Uma das categorias criadas é a \textbf{Editais}, o que permitiu a criação de uma página dedicada aos Editais apenas filtrando as notícias pela categoria ``Editais''.
+
+Outra mudança é que algumas páginas foram reeditadas e redesenhadas, como a página ``Conheça o Projeto''.
+
+Por fim, diversas páginas de conteúdo estático - como a ``Parceiros'', agora são criadas automaticamente assim que o tema é ativado. Este código pode ser encontrado dentro do arquivo ``\textit{functions.php}'' do tema (\textit{pensandoodireito-tema} e \textit{participacao-tema}). Após criada, a página pode ser modificada no painel de administração do wordpress.
+
+Futuras novas páginas estáticas sugere-se seguir o mesmo procedimento, pois assim evita-se esquecer de criar uma página que possui links e referências em diversas áreas do site.

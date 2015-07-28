@@ -1,0 +1,43 @@
+\subsection{Debates}
+Os debates (consultas públicas) promovidos pela \gls{sal} são realizados por meio de ferramentas específicas, a depender do modelo de Debate Público - debate sobre texto ou debate sobre temas.
+
+Estas ferramentas foram desenvolvidas e exploradas em outros produtos.
+
+No que concerne ao Portal \ppod, em termos de codificação, a relação dos debates para com o Portal se dá de duas formas.
+
+A primeira delas é a listagem dos debates, correntes e finalizados, no Portal, em página específica, e as chamadas para os debates na página principal.
+
+Para esta primeira forma foi desenvolvido um novo \gls{cpt}, chamado ``\textit{arq\_debate\_post\_type}'', que servirá como arquivo histórico dos debates. Para cada novo debate que for ser iniciado, será preciso criar um novo conteúdo baseado neste \gls{cpt} com as informações do debate.
+
+As informações referentes a este \gls{cpt} são:
+\begin{description}
+\item Título;
+\item Descrição;
+\item Imagem;
+\item \textit{Status} - Estado do debate (Aberto ou Encerrado);
+\item link - Endereço da página do debate;
+\item período de - Quando se iniciou o debate;
+\item período para - Quando o debate foi ou será finalizado;
+\item assunto - Assunto do debate;
+\item categoria - Categoria do debate;
+\item fases - Quais fases ocorreram ou ocorrerão neste debate; e
+\item resultados - Resultados do debate.
+\end{description}
+
+Os conteúdos referentes a este \gls{cpt} estarão disponíveis na página \url{http://pensando.mj.gov.br/debates}.
+
+Futuramente este conteúdo pode ser evoluído para conter algumas estatísticas básicas de cada debate (como número de participantes), após encerrado, para apresentar estas informações na página de listagem dos debates.
+
+\subsection{Proponha um Debate}
+Um novo recurso que foi pensado/planejado é uma nova área para que a população possa participar do processo de formulação da Agenda dos Debates, permitindo a ela contribuir na priorização de temas a serem levados como Debates Públicos pela \gls{sal}.
+
+Para este recurso será necessário criar um \gls{cpt} próprio, que se adeque ao modelo apresentado no produto desenvolvido pela consultora Mariana Lucchesi.
+
+As ``telas'' para este novo fluxo de participação social já estão desenvolvidas estaticamente, mas é preciso criar os recursos do Wordpress para implementar as funcionalidades nelas presentes. As telas estão presentes no tema ``\textit{pensandoodireito-tema}'', e são as seguintes:
+\begin{description}
+\item \textit{page-comece-debate.php};
+\item \textit{page-comece-novo-debate.php};
+\item \textit{page-explore-e-vote.php};
+\item \textit{page-proposta-comece-debate.php}; e
+\item \textit{page-proposta-criada.php}.
+\end{description}
